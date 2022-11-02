@@ -12,7 +12,7 @@ namespace _1_LABA
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Edit;
-            form.Show();
+            form.ShowDialog();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -20,7 +20,7 @@ namespace _1_LABA
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Edit;
-            form.Show();
+            form.ShowDialog();
         }
 
         private void DeletButton_Click(object sender, EventArgs e)

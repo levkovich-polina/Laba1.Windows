@@ -1,6 +1,6 @@
 ﻿namespace _1_LABA
 {
-    partial class Unlock
+    partial class AuthenticationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -67,7 +67,7 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Parol";
             // 
-            // Unlock
+            // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +77,7 @@
             this.Controls.Add(this.ParolTextBox);
             this.Controls.Add(this.LoginComboBox);
             this.KeyPreview = true;
-            this.Name = "Unlock";
+            this.Name = "AuthenticationForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

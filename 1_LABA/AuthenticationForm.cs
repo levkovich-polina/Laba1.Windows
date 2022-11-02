@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _1_LABA
 {
-    public partial class Unlock : Form
+    public partial class AuthenticationForm : Form
     {
-        public Unlock()
+        public AuthenticationForm()
         {
             InitializeComponent();
         }

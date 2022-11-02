@@ -30,7 +30,7 @@
         {
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.CardTextBox = new System.Windows.Forms.TextBox();
-            this.BirthdayPicker = new System.Windows.Forms.DateTimePicker();
+            this.DateBirthdayPicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,12 +52,12 @@
             this.CardTextBox.Size = new System.Drawing.Size(125, 27);
             this.CardTextBox.TabIndex = 1;
             // 
-            // BirthdayPicker
+            // DateBirthdayPicker
             // 
-            this.BirthdayPicker.Location = new System.Drawing.Point(369, 200);
-            this.BirthdayPicker.Name = "BirthdayPicker";
-            this.BirthdayPicker.Size = new System.Drawing.Size(250, 27);
-            this.BirthdayPicker.TabIndex = 2;
+            this.DateBirthdayPicker.Location = new System.Drawing.Point(369, 200);
+            this.DateBirthdayPicker.Name = "DateBirthdayPicker";
+            this.DateBirthdayPicker.Size = new System.Drawing.Size(250, 27);
+            this.DateBirthdayPicker.TabIndex = 2;
             // 
             // label1
             // 
@@ -114,7 +114,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.BirthdayPicker);
+            this.Controls.Add(this.DateBirthdayPicker);
             this.Controls.Add(this.CardTextBox);
             this.Controls.Add(this.NameTextBox);
             this.KeyPreview = true;
@@ -130,7 +130,7 @@
 
         private TextBox NameTextBox;
         private TextBox CardTextBox;
-        private DateTimePicker BirthdayPicker;
+        private DateTimePicker DateBirthdayPicker;
         private Label label1;
         private Label label2;
         private Label label3;

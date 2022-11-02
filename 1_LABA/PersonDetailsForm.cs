@@ -10,27 +10,30 @@ using System.Windows.Forms;
 
 namespace _1_LABA
 {
-    public partial class PersonDetailsForm :Form
+    public partial class PersonDetailsForm : Form
     {
         public bool IsAdmin { get; set; }
         public PersonEditingMode Mode { get; set; }
-        
+
 
         public PersonDetailsForm()
         {
             InitializeComponent();
         }
-       protected override void OnShown(EventArgs e)
-       {
+
+        protected override void OnShown(EventArgs e)
+        {
             base.OnShown(e);
-          //  this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
-           // this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
+            this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
+            this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
         }
+
         private void PersonDetailsForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Control && e.Modifiers == Keys.Shift && e.KeyCode == Keys.L) //При нажатии Ctrl + Shift + L
+            if (e.Modifiers.HasFlag(Keys.Control) && e.Modifiers.HasFlag(Keys.Shift) &&
+                e.KeyCode == Keys.L) //При нажатии Ctrl + Shift + L
             {
-                Unlock form = new Unlock();
+                AuthenticationForm form = new AuthenticationForm();
                 form.Show();
             }
         }

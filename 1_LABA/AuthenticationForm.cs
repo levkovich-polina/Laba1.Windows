@@ -12,11 +12,26 @@ namespace _1_LABA
 {
     public partial class AuthenticationForm : Form
     {
+        private bool admin;
+
         public AuthenticationForm()
         {
             InitializeComponent();
         }
-         
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            LoginComboBox.SelectedIndex = 0;
+        }
+
+        private void LoginComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PasswordTextBox.Enabled = (LoginComboBox.SelectedItem == "admin");
+            if (!PasswordTextBox.Enabled)
+            {
+                PasswordTextBox.Text = String.Empty;
+            }
+        }
     }
 }

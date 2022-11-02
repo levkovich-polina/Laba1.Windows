@@ -32,6 +32,8 @@
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LoginComboBox
@@ -72,11 +74,31 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
+            // OkButton
+            // 
+            this.OkButton.Location = new System.Drawing.Point(236, 299);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(94, 29);
+            this.OkButton.TabIndex = 4;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(404, 300);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(94, 29);
+            this.CancelButton.TabIndex = 5;
+            this.CancelButton.Text = "CANCEL";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            // 
             // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.OkButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordTextBox);
@@ -95,5 +117,7 @@
         private TextBox PasswordTextBox;
         private Label label1;
         private Label label2;
+        private Button OkButton;
+        private Button CancelButton;
     }
 }

@@ -12,8 +12,6 @@ namespace _1_LABA
 {
     public partial class AuthenticationForm : Form
     {
-        private bool admin;
-
         public AuthenticationForm()
         {
             InitializeComponent();

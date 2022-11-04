@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+
 
 namespace _1_LABA
 {
@@ -34,7 +36,13 @@ namespace _1_LABA
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            var r = MessageBox.Show("Do you want to exit the form?", "DELETE", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Error);
+            if (r == DialogResult.Yes)
+            {
 
+                Close();
+            }
         }
     }
 }

@@ -5,9 +5,10 @@ namespace _1_LABA
         public MainForm()
         {
             InitializeComponent();
+            listBox1.Items.Add(new Person(12, "Polina", new DateTime(2003, 8, 20)));
         }
 
-        private void CreateButton_Click(object sender, EventArgs e)
+        public void CreateButton_Click(object sender, EventArgs e)
         {
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
@@ -15,7 +16,7 @@ namespace _1_LABA
             form.ShowDialog();
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        public void EditButton_Click(object sender, EventArgs e)
         {
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
@@ -23,12 +24,11 @@ namespace _1_LABA
             form.ShowDialog();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
            
         }
-
-        private void DeleteButton_Click(object sender, EventArgs e)
+        public void DeleteButton_Click(object sender, EventArgs e)
         {
             var r = MessageBox.Show("Do you want to delete the selected one?", "DELETE", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Error);

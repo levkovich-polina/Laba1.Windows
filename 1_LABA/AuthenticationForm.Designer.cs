@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LoginComboBox
@@ -50,7 +51,7 @@
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(372, 204);
+            this.PasswordTextBox.Location = new System.Drawing.Point(368, 191);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(125, 27);
@@ -59,44 +60,61 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(229, 137);
+            this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(284, 128);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.Size = new System.Drawing.Size(66, 26);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Login";
+            this.label1.Text = "Login:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 208);
+            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(244, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.Size = new System.Drawing.Size(106, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(236, 299);
+            this.OkButton.BackColor = System.Drawing.Color.Peru;
+            this.OkButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OkButton.Location = new System.Drawing.Point(227, 268);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(94, 29);
+            this.OkButton.Size = new System.Drawing.Size(123, 40);
             this.OkButton.TabIndex = 4;
             this.OkButton.Text = "OK";
-            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.UseVisualStyleBackColor = false;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(404, 300);
+            this.CancelButton.BackColor = System.Drawing.Color.Peru;
+            this.CancelButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CancelButton.Location = new System.Drawing.Point(409, 268);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 29);
+            this.CancelButton.Size = new System.Drawing.Size(123, 40);
             this.CancelButton.TabIndex = 5;
             this.CancelButton.Text = "CANCEL";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(295, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(237, 39);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "AUTHENTICATION";
             // 
             // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Wheat;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.label2);
@@ -119,5 +137,6 @@
         private Label label2;
         private Button OkButton;
         private Button CancelButton;
+        private Label label3;
     }
 }

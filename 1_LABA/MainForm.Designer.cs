@@ -59,7 +59,7 @@
             this.CreateButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CreateButton.Location = new System.Drawing.Point(420, 138);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(114, 46);
+            this.CreateButton.Size = new System.Drawing.Size(119, 46);
             this.CreateButton.TabIndex = 2;
             this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
@@ -72,7 +72,7 @@
             this.EditButton.ForeColor = System.Drawing.Color.Black;
             this.EditButton.Location = new System.Drawing.Point(424, 207);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(112, 46);
+            this.EditButton.Size = new System.Drawing.Size(115, 46);
             this.EditButton.TabIndex = 3;
             this.EditButton.Text = "EDIT";
             this.EditButton.UseVisualStyleBackColor = false;
@@ -84,7 +84,7 @@
             this.DeletButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DeletButton.Location = new System.Drawing.Point(422, 276);
             this.DeletButton.Name = "DeletButton";
-            this.DeletButton.Size = new System.Drawing.Size(114, 46);
+            this.DeletButton.Size = new System.Drawing.Size(117, 46);
             this.DeletButton.TabIndex = 4;
             this.DeletButton.Text = "DELETE";
             this.DeletButton.UseVisualStyleBackColor = false;

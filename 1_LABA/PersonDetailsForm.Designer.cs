@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.AcceptButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameTextBox
@@ -62,53 +63,72 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 141);
+            this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(277, 134);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.Size = new System.Drawing.Size(71, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Name";
+            this.label1.Text = "Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 208);
+            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(257, 201);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.Size = new System.Drawing.Size(91, 26);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Birthday";
+            this.label2.Text = "Birthday:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(224, 272);
+            this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(210, 260);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 20);
+            this.label3.Size = new System.Drawing.Size(138, 26);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Card Number";
+            this.label3.Text = "Card Number:";
             // 
             // AcceptButton
             // 
-            this.AcceptButton.Location = new System.Drawing.Point(236, 330);
+            this.AcceptButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.AcceptButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AcceptButton.Location = new System.Drawing.Point(239, 330);
             this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(94, 29);
+            this.AcceptButton.Size = new System.Drawing.Size(126, 50);
             this.AcceptButton.TabIndex = 6;
             this.AcceptButton.Text = "ACCEPT";
-            this.AcceptButton.UseVisualStyleBackColor = true;
+            this.AcceptButton.UseVisualStyleBackColor = false;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(397, 329);
+            this.CancelButton.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.CancelButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CancelButton.Location = new System.Drawing.Point(424, 330);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 29);
+            this.CancelButton.Size = new System.Drawing.Size(126, 50);
             this.CancelButton.TabIndex = 7;
             this.CancelButton.Text = "CANCEL";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(268, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(282, 34);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "PERSON DETAILS";
             // 
             // PersonDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AcceptButton);
             this.Controls.Add(this.label3);
@@ -136,5 +156,6 @@
         private Label label3;
         private Button AcceptButton;
         private Button CancelButton;
+        private Label label4;
     }
 }

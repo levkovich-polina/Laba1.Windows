@@ -31,5 +31,10 @@ namespace _1_LABA
                 PasswordTextBox.Text = String.Empty;
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

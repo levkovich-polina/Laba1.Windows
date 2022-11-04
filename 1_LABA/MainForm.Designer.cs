@@ -32,7 +32,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.CreateButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
-            this.DeletButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +52,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(202, 184);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // CreateButton
             // 
@@ -78,17 +79,17 @@
             this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // DeletButton
+            // DeleteButton
             // 
-            this.DeletButton.BackColor = System.Drawing.Color.IndianRed;
-            this.DeletButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DeletButton.Location = new System.Drawing.Point(422, 276);
-            this.DeletButton.Name = "DeletButton";
-            this.DeletButton.Size = new System.Drawing.Size(117, 46);
-            this.DeletButton.TabIndex = 4;
-            this.DeletButton.Text = "DELETE";
-            this.DeletButton.UseVisualStyleBackColor = false;
-            this.DeletButton.Click += new System.EventHandler(this.DeletButton_Click);
+            this.DeleteButton.BackColor = System.Drawing.Color.IndianRed;
+            this.DeleteButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeleteButton.Location = new System.Drawing.Point(422, 276);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(117, 46);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "DELETE";
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // MainForm
             // 
@@ -96,7 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DeletButton);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.listBox1);
@@ -114,6 +115,6 @@
         private ListBox listBox1;
         private Button CreateButton;
         private Button EditButton;
-        private Button DeletButton;
+        private Button DeleteButton;
     }
 }

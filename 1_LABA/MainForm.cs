@@ -11,7 +11,7 @@ namespace _1_LABA
         {
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
-            form.Mode = PersonEditingMode.Edit;
+            form.Mode = PersonEditingMode.Create;
             form.ShowDialog();
         }
 
@@ -23,12 +23,18 @@ namespace _1_LABA
             form.ShowDialog();
         }
 
-        private void DeletButton_Click(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var r = MessageBox.Show("Do you want to delete the selected one?", "DELETE", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+           
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            var r = MessageBox.Show("Do you want to delete the selected one?", "DELETE", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Error);
             if (r == DialogResult.Yes)
             {
-                // listBox1.Items.Remove(listBox1.SelectedItem);
+                listBox1.Items.Remove(listBox1.SelectedItem);
             }
         }
     }

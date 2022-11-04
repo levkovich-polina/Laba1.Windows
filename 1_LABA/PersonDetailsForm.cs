@@ -15,6 +15,7 @@ namespace _1_LABA
         public bool IsAdmin { get; set; }
         public PersonEditingMode Mode { get; set; }
 
+        
 
         public PersonDetailsForm()
         {

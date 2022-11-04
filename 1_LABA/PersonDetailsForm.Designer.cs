@@ -49,6 +49,7 @@
             // CardTextBox
             // 
             this.CardTextBox.Location = new System.Drawing.Point(370, 262);
+            this.CardTextBox.MaxLength = 5;
             this.CardTextBox.Name = "CardTextBox";
             this.CardTextBox.Size = new System.Drawing.Size(125, 27);
             this.CardTextBox.TabIndex = 1;

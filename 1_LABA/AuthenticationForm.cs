@@ -15,6 +15,8 @@ namespace _1_LABA
 {
     public partial class AuthenticationForm : Form
     {
+        public string AuthenticatedUser { get; private set; }
+
         public AuthenticationForm()
         {
             InitializeComponent();
@@ -62,21 +64,31 @@ namespace _1_LABA
             var password = PasswordTextBox.Text;
             var passwordHash = CreateMD5(login + password);
             const string adminPasswordHash = "C93CCD78B2076528346216B3B2F701E6";
-            if (passwordHash == adminPasswordHash)
+            if (login == "admin")
             {
-                MessageBox.Show("Authenticated successfully", "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (passwordHash == adminPasswordHash)
+                {
+                    MessageBox.Show("Authenticated successfully as "+login, "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    AuthenticatedUser = login;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Password is not correct", "Authentication failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Password is not correct", "Authentication failed",
+                MessageBox.Show("Authenticated successfully as " + login, "Success",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Information);
+                AuthenticatedUser = login;
+                Close();
             }
-           
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace _1_LABA
 {
@@ -14,8 +15,6 @@ namespace _1_LABA
     {
         public bool IsAdmin { get; set; }
         public PersonEditingMode Mode { get; set; }
-
-        
 
         public PersonDetailsForm()
         {
@@ -37,6 +36,18 @@ namespace _1_LABA
                 AuthenticationForm form = new AuthenticationForm();
                 form.Show();
             }
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AcceptButton_Click(object sender, EventArgs e)
+        {
+            var name = NameTextBox.Text;
+            var cardNumber = CardTextBox.Text;
+            var birthdae = DateBirthdayPicker.Value.Date;
         }
     }
 }

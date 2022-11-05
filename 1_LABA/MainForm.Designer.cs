@@ -104,7 +104,7 @@
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "AuthenticationForm";
             this.ResumeLayout(false);
 
         }

@@ -45,6 +45,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(125, 27);
             this.NameTextBox.TabIndex = 0;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // CardTextBox
             // 
@@ -101,6 +102,7 @@
             this.AcceptButton.TabIndex = 6;
             this.AcceptButton.Text = "ACCEPT";
             this.AcceptButton.UseVisualStyleBackColor = false;
+            this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // CancelButton
             // 
@@ -140,7 +142,7 @@
             this.Controls.Add(this.NameTextBox);
             this.KeyPreview = true;
             this.Name = "PersonDetailsForm";
-            this.Text = "Form1";
+            this.Text = "AuthenticationForm";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PersonDetailsForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

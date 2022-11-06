@@ -57,13 +57,18 @@ namespace _1_LABA
             var birthdae = DateBirthdayPicker.Value.Date;
         }
 
-        private void CardTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void CardTextBox_KeyPress(object sender, KeyPressEventArgs e) //в CardTextBox вводятся только числа
         {
             char ch = e.KeyChar;
             if (!Char.IsDigit(ch) && ch != 8)
             {
                 e.Handled = true;
             }
+        }
+
+        private void NameTextBox_KeyPress(object sender, KeyPressEventArgs e) //в NameTextBox вводятся только буквы
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
         }
     }
 }

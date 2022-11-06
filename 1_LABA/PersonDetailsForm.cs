@@ -56,5 +56,14 @@ namespace _1_LABA
             var cardNumber = CardTextBox.Text;
             var birthdae = DateBirthdayPicker.Value.Date;
         }
+
+        private void CardTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

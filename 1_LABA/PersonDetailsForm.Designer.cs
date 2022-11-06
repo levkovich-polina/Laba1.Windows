@@ -54,6 +54,7 @@
             this.CardTextBox.Name = "CardTextBox";
             this.CardTextBox.Size = new System.Drawing.Size(125, 27);
             this.CardTextBox.TabIndex = 1;
+            this.CardTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardTextBox_KeyPress);
             // 
             // DateBirthdayPicker
             // 

@@ -15,12 +15,17 @@ namespace _1_LABA
     {
         public bool IsAdmin { get; set; }
         public PersonEditingMode Mode { get; set; }
-
+        private int button;
+        private readonly int ADD = 0;
+        private readonly int EDIT = 1;
+        private int CardNumberLENGTH = 5;
+        private readonly string NotEmpty = "";
+        public Person person;
         public PersonDetailsForm()
         {
             InitializeComponent();
         }
-
+        
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -54,7 +59,27 @@ namespace _1_LABA
         {
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
-            var birthdae = DateBirthdayPicker.Value.Date;
+            var birthday = DateBirthdayPicker.Value.Date;
+            if (button == ADD)
+            {
+                if (name != NotEmpty && cardNumber.Length == CardNumberLENGTH && birthday <= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
+                {
+                    int card;
+                    if (int.TryParse(cardNumber, out card))
+                    {
+                        person = new Person(card, name, birthday);
+                        DialogResult = DialogResult.Yes;
+                    }
+                    else
+                    {
+                        MessageBox.Show(Text = "No valid data");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Text = "No valid data");
+                }
+            }
         }
 
         private void CardTextBox_KeyPress(object sender, KeyPressEventArgs e) //в CardTextBox вводятся только числа

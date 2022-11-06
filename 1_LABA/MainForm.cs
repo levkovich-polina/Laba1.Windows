@@ -2,6 +2,9 @@ namespace _1_LABA
 {
     public partial class MainForm : Form
     {
+        private readonly int ADD = 0;
+        private readonly int EDIT = 1;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -14,6 +17,12 @@ namespace _1_LABA
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Create;
             form.ShowDialog();
+            DialogResult dr = form.ShowDialog(this);
+            if (dr == DialogResult.Yes)
+            {
+                listBox1.Items.Add(form.person);
+            }
+            form.Close();
         }
 
         public void EditButton_Click(object sender, EventArgs e)

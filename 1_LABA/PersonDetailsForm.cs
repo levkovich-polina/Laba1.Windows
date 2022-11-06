@@ -35,7 +35,14 @@ namespace _1_LABA
             {
                 AuthenticationForm form = new AuthenticationForm();
                 form.Show();
+                IsAdmin = true;
             }
+            if (IsAdmin)
+            {
+                this.DateBirthdayPicker.Enabled = true;
+                this.CardTextBox.Enabled = true;
+            }
+
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)

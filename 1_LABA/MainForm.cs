@@ -31,6 +31,28 @@ namespace _1_LABA
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Edit;
             form.ShowDialog();
+            // Edit button logic
+            if (listBox1.SelectedItems.Count == 1)
+            {
+                for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    Person person = (Person)listBox1.SelectedItems[i];
+                    PersonDetailsForm editingForm = new PersonDetailsForm();
+                    DialogResult dr = editingForm.ShowDialog(this);
+
+                    if (dr == DialogResult.Yes || dr == DialogResult.Cancel)
+                    {
+                        editingForm.Close();
+                    }
+                    // Replace person
+                    listBox1.Items.Remove(person);
+                    listBox1.Items.Add((Person)editingForm.person);
+                }
+            }
+            else
+            {
+                MessageBox.Show(Text = "You can only select one person to change");
+            }
         }
 
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)

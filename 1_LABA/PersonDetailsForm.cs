@@ -18,7 +18,6 @@ namespace _1_LABA
         private int button;
         private readonly int ADD = 0;
         private readonly int EDIT = 1;
-        private int CardNumberLENGTH = 5;
         private readonly string NotEmpty = "";
         public Person person;
         public PersonDetailsForm()
@@ -62,7 +61,7 @@ namespace _1_LABA
             var birthday = DateBirthdayPicker.Value.Date;
             if (button == ADD)
             {
-                if (name != NotEmpty && cardNumber.Length == CardNumberLENGTH && birthday <= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
+                if (name != NotEmpty  && birthday <= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
                 {
                     int card;
                     if (int.TryParse(cardNumber, out card))
@@ -72,12 +71,40 @@ namespace _1_LABA
                     }
                     else
                     {
-                        MessageBox.Show(Text = "No valid data");
+                        MessageBox.Show(Text = "Incorrect data");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(Text = "No valid data");
+                    MessageBox.Show(Text = "Incorrect data");
+                }
+            }
+            else if (button == EDIT)
+            {
+                if (IsAdmin && name != NotEmpty  && birthday <= DateTime.Now)
+                {
+                    int card;
+                    if (int.TryParse(cardNumber, out card))
+                    {
+                        if (card == person.CardNumber)
+                        {
+                            person = new Person(card, name, birthday);
+                            DialogResult = DialogResult.Yes;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(Text = "Incorrect data");
+                    }
+                }
+                else if (!IsAdmin & name != NotEmpty)
+                {
+                    person = new Person(person.CardNumber, name, person.Birthday);
+                    DialogResult = DialogResult.Yes;
+                }
+                else
+                {
+                    MessageBox.Show(Text = "Incorrect data");
                 }
             }
         }

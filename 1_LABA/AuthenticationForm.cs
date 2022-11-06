@@ -73,6 +73,9 @@ namespace _1_LABA
                         MessageBoxIcon.Information);
                     AuthenticatedUser = login;
                     Close();
+                    FormCollection F = Application.OpenForms;//получили коллекцию всех открытых форм
+                    F[0].BackColor = Color.Red;
+                    F[1].BackColor = Color.Green;
                 }
                 else
                 {

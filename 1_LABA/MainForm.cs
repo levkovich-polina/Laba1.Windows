@@ -16,9 +16,8 @@ namespace _1_LABA
             PersonDetailsForm form = new PersonDetailsForm();
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Create;
-            form.ShowDialog();
-            DialogResult dr = form.ShowDialog(this);
-            if (dr == DialogResult.Yes)
+            DialogResult show = form.ShowDialog(this);
+            if (show == DialogResult.Yes)
             {
                 listBox1.Items.Add(form.person);
             }
@@ -32,14 +31,12 @@ namespace _1_LABA
                 PersonDetailsForm form = new PersonDetailsForm();
                 form.IsAdmin = false;
                 form.Mode = PersonEditingMode.Edit;
-                form.ShowDialog();
                 Person person = (Person)listBox1.SelectedItems[0];
-                DialogResult dr = form.ShowDialog(this);
-                if (dr == DialogResult.Yes || dr == DialogResult.Cancel)
+                DialogResult show = form.ShowDialog(this);
+                if (show == DialogResult.Yes || show == DialogResult.Cancel)
                 {
                     form.Close();
                 }
-                // Происходит замена человека
                 listBox1.Items.Remove(person);
                 listBox1.Items.Add((Person)form.person);
             }

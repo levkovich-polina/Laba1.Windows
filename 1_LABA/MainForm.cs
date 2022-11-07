@@ -22,27 +22,24 @@ namespace _1_LABA
             {
                 listBox1.Items.Add(form.person);
             }
-
             form.Close();
         }
 
         public void EditButton_Click(object sender, EventArgs e)
         {
-            // Edit button logic
             if (listBox1.SelectedItems.Count == 1)
             {
                 PersonDetailsForm form = new PersonDetailsForm();
                 form.IsAdmin = false;
                 form.Mode = PersonEditingMode.Edit;
                 form.ShowDialog();
-                Person person = (Person)listBox1.SelectedItems[1];
+                Person person = (Person)listBox1.SelectedItems[0];
                 DialogResult dr = form.ShowDialog(this);
                 if (dr == DialogResult.Yes || dr == DialogResult.Cancel)
                 {
                     form.Close();
                 }
-
-                // Replace person
+                // Происходит замена человека
                 listBox1.Items.Remove(person);
                 listBox1.Items.Add((Person)form.person);
             }

@@ -146,6 +146,7 @@
             this.KeyPreview = true;
             this.Name = "PersonDetailsForm";
             this.Text = "AuthenticationForm";
+            this.Load += new System.EventHandler(this.PersonDetailsForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PersonDetailsForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

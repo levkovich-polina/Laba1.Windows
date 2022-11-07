@@ -17,6 +17,7 @@ namespace _1_LABA
         public bool IsAdmin { get; set; }
         public PersonEditingMode Mode { get; set; }
         private int button;
+        private int actions;
         private readonly int create = 0;
         private readonly int edit = 1;
         private readonly string notEmpty = "";
@@ -63,7 +64,7 @@ namespace _1_LABA
             if (button == create)
             {
                 if (name != notEmpty && cardNumber != notEmpty &&
-                    birthday <= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
+                    birthday <= DateTime.Now)
                 {
                     int card;
                     if (int.TryParse(cardNumber, out card))
@@ -109,22 +110,71 @@ namespace _1_LABA
             e.Handled = (e.KeyChar == (char)Keys.Space);
         }
 
+        public static int d = 5;
+
+        public struct Coords
+        {
+            public int formWidth;
+            public int formHeight;
+            public int Width;
+            public int Height;
+            public int MiddleX;
+            public int MiddleY;
+
+            public Coords(int formWidth, int formHeight, int Width, int Height)
+            {
+                this.formWidth = formWidth - 9 - d;
+                this.formHeight = formHeight - 38 - d;
+                this.Width = Width;
+                this.Height = Height;
+                MiddleX = Width / 2;
+                MiddleY = Height / 2;
+            }
+        }
+
+        System.Drawing.Point p = new System.Drawing.Point();
+        Coords coords;
+
         private void AcceptButton_MouseMove(object sender, MouseEventArgs e)
         {
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
             var birthday = DateBirthdayPicker.Value.Date;
-
-            Random x = new Random();
-            Random y = new Random();
-            int xx = Convert.ToInt32(x.Next(124, 300));
-            int yy = Convert.ToInt32(y.Next(35, 250));
-            AcceptButton.Location = new Point(xx, yy);
-            if (button == edit && IsAdmin && name != notEmpty &&
-                birthday <= new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
+            actions = 1;
+            if (actions == edit)
             {
+                if (IsAdmin && name != notEmpty &&
+                    birthday <= DateTime.Now)
+                {
+                    int card;
+                    if (int.TryParse(cardNumber, out card))
+                    {
+                        if (AcceptButton.Left < d || AcceptButton.Right + d > coords.formWidth ||
+                            AcceptButton.Top < d || AcceptButton.Bottom + d > coords.formHeight)
+                        {
+                            Random rd = new Random();
+                            AcceptButton.Left = rd.Next(0, coords.formWidth - coords.Width);
+                            AcceptButton.Top = rd.Next(0, coords.formHeight - coords.Height);
+                            return;
+                        }
+
+                        if (AcceptButton.Left > 0 && AcceptButton.Right < coords.formWidth)
+                            p.X = e.X < coords.MiddleX ? d : e.X == coords.MiddleX ? 0 : -d;
+                        if (AcceptButton.Top > 0 && AcceptButton.Bottom < coords.formHeight)
+                            p.Y = e.Y < coords.MiddleY ? d : e.Y == coords.MiddleY ? 0 : -d;
+                        if (DateTime.Now.Millisecond % 3 == 0)
+                        {
+                            AcceptButton.Left += p.X;
+                            AcceptButton.Top += p.Y;
+                        }
+                    }
+                }
             }
-            
+        }
+
+        private void PersonDetailsForm_Load(object sender, EventArgs e)
+        {
+            coords = new Coords(Width, Height, AcceptButton.Width, AcceptButton.Height);
         }
     }
 }

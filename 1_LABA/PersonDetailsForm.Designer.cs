@@ -105,6 +105,7 @@
             this.AcceptButton.Text = "ACCEPT";
             this.AcceptButton.UseVisualStyleBackColor = false;
             this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+            this.AcceptButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AcceptButton_MouseMove);
             // 
             // CancelButton
             // 

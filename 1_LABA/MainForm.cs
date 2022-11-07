@@ -4,7 +4,7 @@ namespace _1_LABA
     {
         private readonly int ADD = 0;
         private readonly int EDIT = 1;
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -22,43 +22,40 @@ namespace _1_LABA
             {
                 listBox1.Items.Add(form.person);
             }
+
             form.Close();
         }
 
         public void EditButton_Click(object sender, EventArgs e)
         {
-            PersonDetailsForm form = new PersonDetailsForm();
-            form.IsAdmin = false;
-            form.Mode = PersonEditingMode.Edit;
-            form.ShowDialog();
             // Edit button logic
             if (listBox1.SelectedItems.Count == 1)
             {
-                for (int i = listBox1.SelectedItems.Count - 1; i >= 0; i--)
+                PersonDetailsForm form = new PersonDetailsForm();
+                form.IsAdmin = false;
+                form.Mode = PersonEditingMode.Edit;
+                form.ShowDialog();
+                Person person = (Person)listBox1.SelectedItems[1];
+                DialogResult dr = form.ShowDialog(this);
+                if (dr == DialogResult.Yes || dr == DialogResult.Cancel)
                 {
-                    Person person = (Person)listBox1.SelectedItems[i];
-                    PersonDetailsForm editingForm = new PersonDetailsForm();
-                    DialogResult dr = editingForm.ShowDialog(this);
-
-                    if (dr == DialogResult.Yes || dr == DialogResult.Cancel)
-                    {
-                        editingForm.Close();
-                    }
-                    // Replace person
-                    listBox1.Items.Remove(person);
-                    listBox1.Items.Add((Person)editingForm.person);
+                    form.Close();
                 }
+
+                // Replace person
+                listBox1.Items.Remove(person);
+                listBox1.Items.Add((Person)form.person);
             }
             else
             {
-                MessageBox.Show(Text = "You can only select one person to change");
+                MessageBox.Show(Text = "You must choose a person to change");
             }
         }
 
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
         }
+
         public void DeleteButton_Click(object sender, EventArgs e)
         {
             var r = MessageBox.Show("Do you want to delete the selected one?", "DELETE", MessageBoxButtons.YesNo,

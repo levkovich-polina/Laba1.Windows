@@ -1,10 +1,12 @@
+using System.Drawing;
+using System;
+
 namespace _1_LABA
 {
     public partial class MainForm : Form
     {
-        private readonly int ADD = 0;
-        private readonly int EDIT = 1;
-
+        private readonly int create = 0;
+        private readonly int edit = 1;
         public MainForm()
         {
             InitializeComponent();
@@ -13,7 +15,8 @@ namespace _1_LABA
 
         public void CreateButton_Click(object sender, EventArgs e)
         {
-            PersonDetailsForm form = new PersonDetailsForm();
+            
+            PersonDetailsForm form = new PersonDetailsForm(null);
             form.IsAdmin = false;
             form.Mode = PersonEditingMode.Create;
             DialogResult show = form.ShowDialog(this);
@@ -28,11 +31,12 @@ namespace _1_LABA
         {
             if (listBox1.SelectedItems.Count == 1)
             {
-                PersonDetailsForm form = new PersonDetailsForm();
+                Person person = (Person)listBox1.SelectedItems[0];
+                PersonDetailsForm form = new PersonDetailsForm(person);
                 form.IsAdmin = false;
                 form.Mode = PersonEditingMode.Edit;
-                Person person = (Person)listBox1.SelectedItems[0];
                 DialogResult show = form.ShowDialog(this);
+                
                 if (show == DialogResult.Yes || show == DialogResult.Cancel)
                 {
                     form.Close();

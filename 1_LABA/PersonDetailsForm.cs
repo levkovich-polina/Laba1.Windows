@@ -21,11 +21,12 @@ namespace _1_LABA
         private readonly int create = 0;
         private readonly int edit = 1;
         private readonly string notEmpty = "";
-        public Person person;
+        public Person person { get; set;}
 
-        public PersonDetailsForm()
+        public PersonDetailsForm(Person pers)
         {
             InitializeComponent();
+            this.person = pers;
         }
 
         protected override void OnShown(EventArgs e)
@@ -33,6 +34,12 @@ namespace _1_LABA
             base.OnShown(e);
             this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
             this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
+            if (Mode == PersonEditingMode.Edit)
+            {
+                NameTextBox.Text = this.person.Name;
+                DateBirthdayPicker.Value = this.person.Birthday;
+                CardTextBox.Text = this.person.CardNumber.ToString();
+            }
         }
 
         private void PersonDetailsForm_KeyDown(object sender, KeyEventArgs e)
@@ -64,6 +71,7 @@ namespace _1_LABA
             if (button == create)
             {
                 if (name != notEmpty && cardNumber != notEmpty &&
+                    (CardTextBox.TextLength >= 5 && CardTextBox.TextLength < 6) &&
                     birthday <= DateTime.Now)
                 {
                     int card;

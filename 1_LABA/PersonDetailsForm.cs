@@ -157,23 +157,26 @@ namespace _1_LABA
                     int card;
                     if (int.TryParse(cardNumber, out card))
                     {
-                        if (AcceptButton.Left < d || AcceptButton.Right + d > coords.formWidth ||
-                            AcceptButton.Top < d || AcceptButton.Bottom + d > coords.formHeight)
+                        if (card != person.CardNumber)
                         {
-                            Random rd = new Random();
-                            AcceptButton.Left = rd.Next(0, coords.formWidth - coords.Width);
-                            AcceptButton.Top = rd.Next(0, coords.formHeight - coords.Height);
-                            return;
-                        }
+                            if (AcceptButton.Left < d || AcceptButton.Right + d > coords.formWidth ||
+                                AcceptButton.Top < d || AcceptButton.Bottom + d > coords.formHeight)
+                            {
+                                Random rd = new Random();
+                                AcceptButton.Left = rd.Next(0, coords.formWidth - coords.Width);
+                                AcceptButton.Top = rd.Next(0, coords.formHeight - coords.Height);
+                                return;
+                            }
 
-                        if (AcceptButton.Left > 0 && AcceptButton.Right < coords.formWidth)
-                            p.X = e.X < coords.MiddleX ? d : e.X == coords.MiddleX ? 0 : -d;
-                        if (AcceptButton.Top > 0 && AcceptButton.Bottom < coords.formHeight)
-                            p.Y = e.Y < coords.MiddleY ? d : e.Y == coords.MiddleY ? 0 : -d;
-                        if (DateTime.Now.Millisecond % 3 == 0)
-                        {
-                            AcceptButton.Left += p.X;
-                            AcceptButton.Top += p.Y;
+                            if (AcceptButton.Left > 0 && AcceptButton.Right < coords.formWidth)
+                                p.X = e.X < coords.MiddleX ? d : e.X == coords.MiddleX ? 0 : -d;
+                            if (AcceptButton.Top > 0 && AcceptButton.Bottom < coords.formHeight)
+                                p.Y = e.Y < coords.MiddleY ? d : e.Y == coords.MiddleY ? 0 : -d;
+                            if (DateTime.Now.Millisecond % 3 == 0)
+                            {
+                                AcceptButton.Left += p.X;
+                                AcceptButton.Top += p.Y;
+                            }
                         }
                     }
                 }

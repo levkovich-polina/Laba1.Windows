@@ -10,7 +10,7 @@ namespace _1_LABA
         public MainForm()
         {
             InitializeComponent();
-            listBox1.Items.Add(new Person(12, "Polina", new DateTime(2003, 8, 20)));
+            listBox1.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
         }
 
         public void CreateButton_Click(object sender, EventArgs e)

@@ -43,7 +43,7 @@
             // 
             this.NameTextBox.Location = new System.Drawing.Point(368, 133);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(125, 27);
+            this.NameTextBox.Size = new System.Drawing.Size(182, 27);
             this.NameTextBox.TabIndex = 0;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameTextBox_KeyPress);
@@ -53,7 +53,7 @@
             this.CardTextBox.Location = new System.Drawing.Point(370, 262);
             this.CardTextBox.MaxLength = 5;
             this.CardTextBox.Name = "CardTextBox";
-            this.CardTextBox.Size = new System.Drawing.Size(125, 27);
+            this.CardTextBox.Size = new System.Drawing.Size(180, 27);
             this.CardTextBox.TabIndex = 1;
             this.CardTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardTextBox_KeyPress);
             // 
@@ -61,7 +61,7 @@
             // 
             this.DateBirthdayPicker.Location = new System.Drawing.Point(369, 200);
             this.DateBirthdayPicker.Name = "DateBirthdayPicker";
-            this.DateBirthdayPicker.Size = new System.Drawing.Size(250, 27);
+            this.DateBirthdayPicker.Size = new System.Drawing.Size(181, 27);
             this.DateBirthdayPicker.TabIndex = 2;
             // 
             // label1
@@ -145,7 +145,7 @@
             this.Controls.Add(this.NameTextBox);
             this.KeyPreview = true;
             this.Name = "PersonDetailsForm";
-            this.Text = "AuthenticationForm";
+            this.Text = "PersonDetaisForm";
             this.Load += new System.EventHandler(this.PersonDetailsForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PersonDetailsForm_KeyDown);
             this.ResumeLayout(false);

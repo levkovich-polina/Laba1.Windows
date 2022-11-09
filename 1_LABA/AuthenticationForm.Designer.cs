@@ -51,10 +51,10 @@
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(368, 191);
+            this.PasswordTextBox.Location = new System.Drawing.Point(368, 216);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
-            this.PasswordTextBox.Size = new System.Drawing.Size(125, 27);
+            this.PasswordTextBox.Size = new System.Drawing.Size(151, 27);
             this.PasswordTextBox.TabIndex = 1;
             // 
             // label1
@@ -71,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(244, 192);
+            this.label2.Location = new System.Drawing.Point(244, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 26);
             this.label2.TabIndex = 3;
@@ -81,9 +81,9 @@
             // 
             this.OkButton.BackColor = System.Drawing.Color.Peru;
             this.OkButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.OkButton.Location = new System.Drawing.Point(227, 268);
+            this.OkButton.Location = new System.Drawing.Point(244, 285);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(123, 40);
+            this.OkButton.Size = new System.Drawing.Size(123, 47);
             this.OkButton.TabIndex = 4;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = false;
@@ -93,9 +93,9 @@
             // 
             this.CancelButton.BackColor = System.Drawing.Color.Peru;
             this.CancelButton.Font = new System.Drawing.Font("Arial Unicode MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(409, 268);
+            this.CancelButton.Location = new System.Drawing.Point(419, 285);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(123, 40);
+            this.CancelButton.Size = new System.Drawing.Size(123, 47);
             this.CancelButton.TabIndex = 5;
             this.CancelButton.Text = "CANCEL";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.LoginComboBox);
             this.KeyPreview = true;
             this.Name = "AuthenticationForm";
-            this.Text = "Form1";
+            this.Text = "AuthenticationForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

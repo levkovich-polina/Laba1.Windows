@@ -1,7 +1,4 @@
-using System.Drawing;
-using System;
-
-namespace _1_LABA
+namespace _1_LABA.Forms
 {
     public partial class MainForm : Form
     {

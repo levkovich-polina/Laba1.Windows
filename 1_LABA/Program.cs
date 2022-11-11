@@ -1,3 +1,5 @@
+using _1_LABA.Forms;
+
 namespace _1_LABA
 {
     internal static class Program

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-
-namespace _1_LABA
+﻿namespace _1_LABA.Forms
 {
     public partial class PersonDetailsForm : Form
     {
@@ -21,7 +9,7 @@ namespace _1_LABA
         private readonly int create = 0;
         private readonly int edit = 1;
         private readonly string notEmpty = "";
-        public Person person { get; set;}
+        public Person person { get; set; }
 
         public PersonDetailsForm(Person pers)
         {
@@ -49,14 +37,12 @@ namespace _1_LABA
             {
                 AuthenticationForm form = new AuthenticationForm();
                 form.Show();
-                IsAdmin = true;
+                IsAdmin = form.AuthenticatedUser == "admin";
+                this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
+                this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
             }
+           
 
-            if (IsAdmin)
-            {
-                this.DateBirthdayPicker.Enabled = true;
-                this.CardTextBox.Enabled = true;
-            }
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
@@ -70,37 +56,65 @@ namespace _1_LABA
             var birthday = DateBirthdayPicker.Value.Date;
             if (button == create)
             {
-                if (name != notEmpty && cardNumber != notEmpty &&
-                    (CardTextBox.TextLength >= 5 && CardTextBox.TextLength < 6) &&
-                    birthday <= DateTime.Now)
+                if (name == notEmpty)
                 {
-                    int card;
-                    if (int.TryParse(cardNumber, out card))
-                    {
-                        person = new Person(card, name, birthday);
-                        DialogResult = DialogResult.Yes;
-                    }
+                    MessageBox.Show(Text = "Incorrect name");
                 }
                 else
                 {
-                    MessageBox.Show(Text = "Incorrect data");
+                    if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
+                    {
+                        MessageBox.Show(Text = "Incorrect card number");
+                    }
+                    else
+                    {
+                        if (birthday >= DateTime.Now)
+                        {
+                            MessageBox.Show(Text = "Incorrect birthday");
+                        }
+                        else
+                        {
+                            int card;
+                            if (int.TryParse(cardNumber, out card))
+                            {
+                                person = new Person(card, name, birthday);
+                                DialogResult = DialogResult.Yes;
+                            }
+                        }
+                    }
                 }
             }
             else if (button == edit)
             {
-                if (IsAdmin && name != notEmpty && birthday <= DateTime.Now)
-                {
-                    int card;
-                    if (int.TryParse(cardNumber, out card))
+                IsAdmin = true;
+                if (name == notEmpty)
                     {
-                        person = new Person(card, name, birthday);
-                        DialogResult = DialogResult.Yes;
+                        MessageBox.Show(Text = "Incorrect name");
                     }
-                }
-                else
-                {
-                    MessageBox.Show(Text = "Incorrect data");
-                }
+                    else
+                    {
+                        if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
+                        {
+                            MessageBox.Show(Text = "Incorrect card number");
+                        }
+                        else
+                        {
+                            if (birthday >= DateTime.Now)
+                            {
+                                MessageBox.Show(Text = "Incorrect birthday");
+                            }
+                            else
+                            {
+                                int card;
+                                if (int.TryParse(cardNumber, out card))
+                                {
+                                    person = new Person(card, name, birthday);
+                                    DialogResult = DialogResult.Yes;
+                                }
+                            }
+                        }
+                    }
+                
             }
         }
 

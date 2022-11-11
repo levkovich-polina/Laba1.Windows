@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Security.Cryptography;
-
-
-namespace _1_LABA
+﻿namespace _1_LABA.Forms
 {
     public partial class AuthenticationForm : Form
     {
@@ -73,9 +60,6 @@ namespace _1_LABA
                         MessageBoxIcon.Information);
                     AuthenticatedUser = login;
                     Close();
-                    FormCollection F = Application.OpenForms;//получили коллекцию всех открытых форм
-                    F[0].BackColor = Color.Red;
-                    F[1].BackColor = Color.Green;
                 }
                 else
                 {

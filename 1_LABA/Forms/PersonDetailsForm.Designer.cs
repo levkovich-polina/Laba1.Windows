@@ -1,4 +1,4 @@
-﻿namespace _1_LABA
+﻿namespace _1_LABA.Forms
 {
     partial class PersonDetailsForm
     {

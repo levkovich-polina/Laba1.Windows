@@ -1,4 +1,4 @@
-﻿namespace _1_LABA
+﻿namespace _1_LABA.Forms
 {
     partial class AuthenticationForm
     {
@@ -39,11 +39,12 @@
             // 
             // LoginComboBox
             // 
+            this.LoginComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LoginComboBox.FormattingEnabled = true;
             this.LoginComboBox.Items.AddRange(new object[] {
             "user",
             "admin"});
-            this.LoginComboBox.Location = new System.Drawing.Point(368, 130);
+            this.LoginComboBox.Location = new System.Drawing.Point(368, 141);
             this.LoginComboBox.Name = "LoginComboBox";
             this.LoginComboBox.Size = new System.Drawing.Size(151, 28);
             this.LoginComboBox.TabIndex = 0;
@@ -61,7 +62,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(284, 128);
+            this.label1.Location = new System.Drawing.Point(284, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 26);
             this.label1.TabIndex = 2;

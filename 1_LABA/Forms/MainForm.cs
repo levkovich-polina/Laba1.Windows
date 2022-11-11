@@ -2,16 +2,30 @@ namespace _1_LABA.Forms
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private AuthenticationManager _authenticationManager;
+
+        public MainForm(AuthenticationManager authenticationManager)
         {
+            _authenticationManager = authenticationManager;
+            _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
             InitializeComponent();
             listBox1.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
         }
 
+        private void _authenticationManager_LoggedIn()
+        {
+            if (_authenticationManager.AuthenticatedUser == "admin")
+            {
+                BackColor = ColorManager.GetRandomColor();
+                CreateButton.BackColor = ColorManager.GetRandomColor();
+                EditButton.BackColor = ColorManager.GetRandomColor();
+                DeleteButton.BackColor = ColorManager.GetRandomColor();
+            }
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            PersonDetailsForm form = new PersonDetailsForm(null);
-            form.IsAdmin = false;
+            PersonDetailsForm form = new PersonDetailsForm(_authenticationManager, null);
             form.Mode = PersonEditingMode.Create;
             DialogResult result = form.ShowDialog(this);
             if (form.person != null)
@@ -27,8 +41,7 @@ namespace _1_LABA.Forms
             if (listBox1.SelectedItem != null)
             {
                 Person person = (Person)listBox1.SelectedItems[0];
-                PersonDetailsForm form = new PersonDetailsForm(person);
-                form.IsAdmin = false;
+                PersonDetailsForm form = new PersonDetailsForm(_authenticationManager, person);
                 form.Mode = PersonEditingMode.Edit;
                 DialogResult show = form.ShowDialog(this);
 

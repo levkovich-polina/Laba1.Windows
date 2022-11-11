@@ -1,8 +1,10 @@
-﻿namespace _1_LABA.Forms
+﻿using System.Windows.Forms;
+
+namespace _1_LABA.Forms
 {
     public partial class PersonDetailsForm : Form
     {
-        public bool IsAdmin { get; set; }
+        private readonly AuthenticationManager _authenticationManager;
         public PersonEditingMode Mode { get; set; }
         private int button;
         private int actions;
@@ -11,17 +13,30 @@
         private readonly string notEmpty = "";
         public Person person { get; set; }
 
-        public PersonDetailsForm(Person pers)
+        public PersonDetailsForm(AuthenticationManager authenticationManager, Person pers)
         {
+            _authenticationManager = authenticationManager;
+
+            _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
             InitializeComponent();
             this.person = pers;
+        }
+
+        private void _authenticationManager_LoggedIn()
+        {
+            UpdateTextBoxAvailability();
+            if (_authenticationManager.IsAdmin)
+            {
+                BackColor = ColorManager.GetRandomColor();
+                AcceptButton.BackColor =ColorManager.GetRandomColor();
+                CancelButton.BackColor=ColorManager.GetRandomColor();
+            }
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
-            this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
+            UpdateTextBoxAvailability();
             if (Mode == PersonEditingMode.Edit)
             {
                 NameTextBox.Text = this.person.Name;
@@ -30,19 +45,20 @@
             }
         }
 
+        private void UpdateTextBoxAvailability()
+        {
+            this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || _authenticationManager.IsAdmin;
+            this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || _authenticationManager.IsAdmin;
+        }
+
         private void PersonDetailsForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Modifiers.HasFlag(Keys.Control) && e.Modifiers.HasFlag(Keys.Shift) &&
                 e.KeyCode == Keys.L) //При нажатии Ctrl + Shift + L
             {
-                AuthenticationForm form = new AuthenticationForm();
+                AuthenticationForm form = new AuthenticationForm(_authenticationManager);
                 form.Show();
-                IsAdmin = form.AuthenticatedUser == "admin";
-                this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
-                this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || IsAdmin;
             }
-           
-
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
@@ -86,35 +102,33 @@
             }
             else if (button == edit)
             {
-                IsAdmin = true;
                 if (name == notEmpty)
+                {
+                    MessageBox.Show(Text = "Incorrect name");
+                }
+                else
+                {
+                    if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
                     {
-                        MessageBox.Show(Text = "Incorrect name");
+                        MessageBox.Show(Text = "Incorrect card number");
                     }
                     else
                     {
-                        if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
+                        if (birthday >= DateTime.Now)
                         {
-                            MessageBox.Show(Text = "Incorrect card number");
+                            MessageBox.Show(Text = "Incorrect birthday");
                         }
                         else
                         {
-                            if (birthday >= DateTime.Now)
+                            int card;
+                            if (int.TryParse(cardNumber, out card))
                             {
-                                MessageBox.Show(Text = "Incorrect birthday");
-                            }
-                            else
-                            {
-                                int card;
-                                if (int.TryParse(cardNumber, out card))
-                                {
-                                    person = new Person(card, name, birthday);
-                                    DialogResult = DialogResult.Yes;
-                                }
+                                person = new Person(card, name, birthday);
+                                DialogResult = DialogResult.Yes;
                             }
                         }
                     }
-                
+                }
             }
         }
 
@@ -165,7 +179,7 @@
             actions = 1;
             if (actions == edit)
             {
-                if (IsAdmin && name != notEmpty &&
+                if (_authenticationManager.IsAdmin && name != notEmpty &&
                     birthday <= DateTime.Now)
                 {
                     int card;

@@ -13,7 +13,8 @@ namespace _1_LABA
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            var authenticationManager = new AuthenticationManager();
+            Application.Run(new MainForm(authenticationManager));
         }
     }
 }

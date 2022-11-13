@@ -1,10 +1,10 @@
-﻿using System.Windows.Forms;
-
-namespace _1_LABA.Forms
+﻿namespace _1_LABA.Forms
 {
     public partial class PersonDetailsForm : Form
     {
         private readonly AuthenticationManager _authenticationManager;
+
+        private Coordinates _coordinates;
 
         public PersonDetailsForm(AuthenticationManager authenticationManager, Person person)
         {
@@ -16,14 +16,17 @@ namespace _1_LABA.Forms
 
         public Person Person { get; private set; }
 
+
         private bool IsCreateMode
         {
             get { return Person == null; }
         }
+
         private bool IsEditMode
         {
             get { return Person != null; }
         }
+
         private void AuthenticationManager_LoggedIn()
         {
             UpdateTextBoxAvailability();
@@ -87,8 +90,7 @@ namespace _1_LABA.Forms
                     }
                     else
                     {
-                        int card;
-                        if (int.TryParse(cardNumber, out card))
+                        if (int.TryParse(cardNumber, out var card))
                         {
                             Person = new Person(card, name, birthday);
                             DialogResult = DialogResult.Yes;
@@ -101,7 +103,7 @@ namespace _1_LABA.Forms
         private void CardTextBox_KeyPress(object sender, KeyPressEventArgs e) //в CardTextBox вводятся только числа
         {
             char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8)
+            if (!char.IsDigit(ch) && ch != 8)
             {
                 e.Handled = true;
             }
@@ -112,73 +114,56 @@ namespace _1_LABA.Forms
             e.Handled = (e.KeyChar == (char)Keys.Space);
         }
 
-        public static int d = 5;
-
-        public struct Coords
-        {
-            public int formWidth;
-            public int formHeight;
-            public int Width;
-            public int Height;
-            public int MiddleX;
-            public int MiddleY;
-
-            public Coords(int formWidth, int formHeight, int Width, int Height)
-            {
-                this.formWidth = formWidth - 9 - d;
-                this.formHeight = formHeight - 38 - d;
-                this.Width = Width;
-                this.Height = Height;
-                MiddleX = Width / 2;
-                MiddleY = Height / 2;
-            }
-        }
-
-        Point p = new Point();
-        Coords coords;
 
         private void AcceptButton_MouseMove(object sender, MouseEventArgs e)
         {
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
             var birthday = DateBirthdayPicker.Value.Date;
-            if (Person != null)
-            {
-                if (_authenticationManager.IsAdmin && name != string.Empty &&
-                    birthday <= DateTime.Now)
-                {
-                    int card;
-                    if (int.TryParse(cardNumber, out card))
-                    {
-                        if (card != Person.CardNumber)
-                        {
-                            if (AcceptButton.Left < d || AcceptButton.Right + d > coords.formWidth ||
-                                AcceptButton.Top < d || AcceptButton.Bottom + d > coords.formHeight)
-                            {
-                                Random rd = new Random();
-                                AcceptButton.Left = rd.Next(0, coords.formWidth - coords.Width);
-                                AcceptButton.Top = rd.Next(0, coords.formHeight - coords.Height);
-                                return;
-                            }
+            if (!IsEditMode)
+                return;
 
-                            if (AcceptButton.Left > 0 && AcceptButton.Right < coords.formWidth)
-                                p.X = e.X < coords.MiddleX ? d : e.X == coords.MiddleX ? 0 : -d;
-                            if (AcceptButton.Top > 0 && AcceptButton.Bottom < coords.formHeight)
-                                p.Y = e.Y < coords.MiddleY ? d : e.Y == coords.MiddleY ? 0 : -d;
-                            if (DateTime.Now.Millisecond % 3 == 0)
-                            {
-                                AcceptButton.Left += p.X;
-                                AcceptButton.Top += p.Y;
-                            }
-                        }
-                    }
-                }
+            if (!_authenticationManager.IsAdmin || name == string.Empty || birthday > DateTime.Now)
+                return;
+
+            if (!int.TryParse(cardNumber, out var card))
+                return;
+
+            if (card == Person.CardNumber)
+                return;
+
+
+            if (AcceptButton.Left < Coordinates.ButtonMoveStep ||
+                AcceptButton.Right + Coordinates.ButtonMoveStep > _coordinates.FormWidth ||
+                AcceptButton.Top < Coordinates.ButtonMoveStep ||
+                AcceptButton.Bottom + Coordinates.ButtonMoveStep > _coordinates.FormHeight)
+            {
+                Random rd = new Random();
+                AcceptButton.Left = rd.Next(0, _coordinates.FormWidth - _coordinates.Width);
+                AcceptButton.Top = rd.Next(0, _coordinates.FormHeight - _coordinates.Height);
+                return;
+            }
+
+            Point newButtonLocation = new Point();
+
+            if (AcceptButton.Left > 0 && AcceptButton.Right < _coordinates.FormWidth)
+                newButtonLocation.X =
+                    e.X < _coordinates.MiddleX ? Coordinates.ButtonMoveStep :
+                    e.X == _coordinates.MiddleX ? 0 : -Coordinates.ButtonMoveStep;
+            if (AcceptButton.Top > 0 && AcceptButton.Bottom < _coordinates.FormHeight)
+                newButtonLocation.Y =
+                    e.Y < _coordinates.MiddleY ? Coordinates.ButtonMoveStep :
+                    e.Y == _coordinates.MiddleY ? 0 : -Coordinates.ButtonMoveStep;
+            if (DateTime.Now.Millisecond % 3 == 0)
+            {
+                AcceptButton.Left += newButtonLocation.X;
+                AcceptButton.Top += newButtonLocation.Y;
             }
         }
 
         private void PersonDetailsForm_Load(object sender, EventArgs e)
         {
-            coords = new Coords(Width, Height, AcceptButton.Width, AcceptButton.Height);
+            _coordinates = new Coordinates(Width, Height, AcceptButton.Width, AcceptButton.Height);
         }
 
         private void CardTextBox_TextChanged(object sender, EventArgs e)

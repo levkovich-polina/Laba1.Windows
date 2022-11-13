@@ -13,7 +13,7 @@ namespace _1_LABA
 
         public bool IsAdmin
         {
-            get { return AuthenticatedUser == "admin"; }
+            get { return AuthenticatedUser == KnownUsers.Admin; }
         }
 
         public string AuthenticatedUser { get; private set; }
@@ -22,7 +22,7 @@ namespace _1_LABA
         {
             var passwordHash = CreateMD5(login + password);
 
-            if (login == "admin")
+            if (login == KnownUsers.Admin)
             {
                 if (passwordHash == AdminPasswordHash)
                 {

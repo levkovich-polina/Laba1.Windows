@@ -3,7 +3,6 @@
     public partial class AuthenticationForm : Form
     {
         private readonly AuthenticationManager _authenticationManager;
-        public string AuthenticatedUser { get; private set; }
 
         public AuthenticationForm(AuthenticationManager authenticationManager)
         {
@@ -20,7 +19,6 @@
 
         private void LoginComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PasswordTextBox.Enabled = (LoginComboBox.SelectedItem == "admin");
             if (!PasswordTextBox.Enabled)
             {
                 PasswordTextBox.Text = String.Empty;

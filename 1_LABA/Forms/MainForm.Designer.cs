@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.PersonsListBox = new System.Windows.Forms.ListBox();
             this.CreateButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -44,15 +44,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "DATA BASE";
             // 
-            // listBox1
+            // PersonsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(183, 138);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(202, 184);
-            this.listBox1.TabIndex = 1;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.PersonsListBox.FormattingEnabled = true;
+            this.PersonsListBox.ItemHeight = 20;
+            this.PersonsListBox.Location = new System.Drawing.Point(183, 138);
+            this.PersonsListBox.Name = "PersonsListBox";
+            this.PersonsListBox.Size = new System.Drawing.Size(202, 184);
+            this.PersonsListBox.TabIndex = 1;
             // 
             // CreateButton
             // 
@@ -100,7 +99,7 @@
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CreateButton);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.PersonsListBox);
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
             this.Name = "MainForm";
@@ -112,7 +111,7 @@
         #endregion
 
         private Label label1;
-        private ListBox listBox1;
+        private ListBox PersonsListBox;
         private Button CreateButton;
         private Button EditButton;
         private Button DeleteButton;

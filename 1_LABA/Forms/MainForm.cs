@@ -27,11 +27,10 @@ namespace _1_LABA.Forms
         private void CreateButton_Click(object sender, EventArgs e)
         {
             PersonDetailsForm form = new PersonDetailsForm(_authenticationManager, null);
-            form.Mode = PersonEditingMode.Create;
             form.ShowDialog(this);
-            if (form.person != null)
+            if (form.Person != null)
             {
-                PersonsListBox.Items.Add(form.person);
+                PersonsListBox.Items.Add(form.Person);
             }
         }
 
@@ -41,10 +40,9 @@ namespace _1_LABA.Forms
             {
                 Person person = (Person)PersonsListBox.SelectedItems[0];
                 PersonDetailsForm form = new PersonDetailsForm(_authenticationManager, person);
-                form.Mode = PersonEditingMode.Edit;
                 form.ShowDialog(this);
                 PersonsListBox.Items.Remove(person);
-                PersonsListBox.Items.Add(form.person);
+                PersonsListBox.Items.Add(form.Person);
             }
             else
             {

@@ -5,23 +5,26 @@ namespace _1_LABA.Forms
     public partial class PersonDetailsForm : Form
     {
         private readonly AuthenticationManager _authenticationManager;
-        public PersonEditingMode Mode { get; set; }
-        private int button;
-        private int actions;
-        private readonly int create = 0;
-        private readonly int edit = 1;
-        private readonly string notEmpty = "";
-        public Person person { get; set; }
 
-        public PersonDetailsForm(AuthenticationManager authenticationManager, Person pers)
+        public PersonDetailsForm(AuthenticationManager authenticationManager, Person person)
         {
             _authenticationManager = authenticationManager;
-            _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
+            _authenticationManager.LoggedIn += AuthenticationManager_LoggedIn;
             InitializeComponent();
-            this.person = pers;
+            Person = person;
         }
 
-        private void _authenticationManager_LoggedIn()
+        public Person Person { get; private set; }
+
+        private bool IsCreateMode
+        {
+            get { return Person == null; }
+        }
+        private bool IsEditMode
+        {
+            get { return Person != null; }
+        }
+        private void AuthenticationManager_LoggedIn()
         {
             UpdateTextBoxAvailability();
             if (_authenticationManager.IsAdmin)
@@ -37,32 +40,28 @@ namespace _1_LABA.Forms
         {
             base.OnShown(e);
             UpdateTextBoxAvailability();
-            if (Mode == PersonEditingMode.Edit)
+            if (IsEditMode)
             {
-                NameTextBox.Text = this.person.Name;
-                DateBirthdayPicker.Value = this.person.Birthday;
-                CardTextBox.Text = this.person.CardNumber.ToString();
+                NameTextBox.Text = Person.Name;
+                DateBirthdayPicker.Value = Person.Birthday;
+                CardTextBox.Text = Person.CardNumber.ToString();
             }
         }
 
         private void UpdateTextBoxAvailability()
         {
-            this.CardTextBox.Enabled = Mode == PersonEditingMode.Create || _authenticationManager.IsAdmin;
-            this.DateBirthdayPicker.Enabled = Mode == PersonEditingMode.Create || _authenticationManager.IsAdmin;
+            CardTextBox.Enabled = IsCreateMode || _authenticationManager.IsAdmin;
+            DateBirthdayPicker.Enabled = IsCreateMode || _authenticationManager.IsAdmin;
         }
 
         private void PersonDetailsForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Modifiers.HasFlag(Keys.Control) && e.Modifiers.HasFlag(Keys.Shift) &&
-                e.KeyCode == Keys.L) //При нажатии Ctrl + Shift + L
+                e.KeyCode == Keys.L)
             {
                 AuthenticationForm form = new AuthenticationForm(_authenticationManager);
                 form.Show();
             }
-        }
-
-        private void NameTextBox_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void AcceptButton_Click(object sender, EventArgs e)
@@ -70,62 +69,29 @@ namespace _1_LABA.Forms
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
             var birthday = DateBirthdayPicker.Value.Date;
-            if (button == create)
+            if (name == string.Empty)
             {
-                if (name == notEmpty)
-                {
-                    MessageBox.Show(Text = "Incorrect name");
-                }
-                else
-                {
-                    if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
-                    {
-                        MessageBox.Show(Text = "Incorrect card number");
-                    }
-                    else
-                    {
-                        if (birthday >= DateTime.Now)
-                        {
-                            MessageBox.Show(Text = "Incorrect birthday");
-                        }
-                        else
-                        {
-                            int card;
-                            if (int.TryParse(cardNumber, out card))
-                            {
-                                person = new Person(card, name, birthday);
-                                DialogResult = DialogResult.Yes;
-                            }
-                        }
-                    }
-                }
+                MessageBox.Show(Text = "Incorrect name");
             }
-            else if (button == edit)
+            else
             {
-                if (name == notEmpty)
+                if (cardNumber == string.Empty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
                 {
-                    MessageBox.Show(Text = "Incorrect name");
+                    MessageBox.Show(Text = "Incorrect card number");
                 }
                 else
                 {
-                    if (cardNumber == notEmpty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
+                    if (birthday >= DateTime.Now)
                     {
-                        MessageBox.Show(Text = "Incorrect card number");
+                        MessageBox.Show(Text = "Incorrect birthday");
                     }
                     else
                     {
-                        if (birthday >= DateTime.Now)
+                        int card;
+                        if (int.TryParse(cardNumber, out card))
                         {
-                            MessageBox.Show(Text = "Incorrect birthday");
-                        }
-                        else
-                        {
-                            int card;
-                            if (int.TryParse(cardNumber, out card))
-                            {
-                                person = new Person(card, name, birthday);
-                                DialogResult = DialogResult.Yes;
-                            }
+                            Person = new Person(card, name, birthday);
+                            DialogResult = DialogResult.Yes;
                         }
                     }
                 }
@@ -168,7 +134,7 @@ namespace _1_LABA.Forms
             }
         }
 
-        System.Drawing.Point p = new System.Drawing.Point();
+        Point p = new Point();
         Coords coords;
 
         private void AcceptButton_MouseMove(object sender, MouseEventArgs e)
@@ -176,16 +142,15 @@ namespace _1_LABA.Forms
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
             var birthday = DateBirthdayPicker.Value.Date;
-            actions = 1;
-            if (actions == edit)
+            if (Person != null)
             {
-                if (_authenticationManager.IsAdmin && name != notEmpty &&
+                if (_authenticationManager.IsAdmin && name != string.Empty &&
                     birthday <= DateTime.Now)
                 {
                     int card;
                     if (int.TryParse(cardNumber, out card))
                     {
-                        if (card != person.CardNumber)
+                        if (card != Person.CardNumber)
                         {
                             if (AcceptButton.Left < d || AcceptButton.Right + d > coords.formWidth ||
                                 AcceptButton.Top < d || AcceptButton.Bottom + d > coords.formHeight)

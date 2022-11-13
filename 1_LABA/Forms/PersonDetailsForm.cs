@@ -16,7 +16,6 @@ namespace _1_LABA.Forms
         public PersonDetailsForm(AuthenticationManager authenticationManager, Person pers)
         {
             _authenticationManager = authenticationManager;
-
             _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
             InitializeComponent();
             this.person = pers;
@@ -215,6 +214,12 @@ namespace _1_LABA.Forms
         private void PersonDetailsForm_Load(object sender, EventArgs e)
         {
             coords = new Coords(Width, Height, AcceptButton.Width, AcceptButton.Height);
+        }
+
+        private void CardTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var digits = CardTextBox.Text.Where(char.IsDigit).ToArray();
+            CardTextBox.Text = new string(digits);
         }
     }
 }

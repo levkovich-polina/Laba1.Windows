@@ -28,8 +28,9 @@ namespace _1_LABA.Forms
             if (_authenticationManager.IsAdmin)
             {
                 BackColor = ColorManager.GetRandomColor();
-                AcceptButton.BackColor =ColorManager.GetRandomColor();
-                CancelButton.BackColor=ColorManager.GetRandomColor();
+                var buttonColor = ColorManager.GetRandomColor();
+                AcceptButton.BackColor = buttonColor;
+                CancelButton.BackColor = buttonColor;
             }
         }
 

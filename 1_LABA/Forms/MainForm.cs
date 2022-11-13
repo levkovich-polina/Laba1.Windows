@@ -17,9 +17,10 @@ namespace _1_LABA.Forms
             if (_authenticationManager.AuthenticatedUser == "admin")
             {
                 BackColor = ColorManager.GetRandomColor();
-                CreateButton.BackColor = ColorManager.GetRandomColor();
-                EditButton.BackColor = ColorManager.GetRandomColor();
-                DeleteButton.BackColor = ColorManager.GetRandomColor();
+                var buttonBackColor = ColorManager.GetRandomColor();
+                CreateButton.BackColor = buttonBackColor;
+                EditButton.BackColor = buttonBackColor;
+                DeleteButton.BackColor = buttonBackColor;
             }
         }
 

@@ -3,13 +3,23 @@ namespace _1_LABA.Forms
     public partial class MainForm : Form
     {
         private readonly AuthenticationManager _authenticationManager;
-
-        public MainForm(AuthenticationManager authenticationManager)
+        private readonly ScreenPartWatcher _screenPartWatcher;
+        public event Action Move;
+        public MainForm(AuthenticationManager authenticationManager, ScreenPartWatcher screenPartWatcher)
         {
             _authenticationManager = authenticationManager;
             _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
+            _screenPartWatcher = screenPartWatcher;
+            _screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
             InitializeComponent();
             PersonsListBox.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
+
+        }
+
+        private ScreenPart _screenPartWatcher_ScreenPartChanged()
+        {
+            throw new NotImplementedException();
+            _vault.Enter;
         }
 
         private void _authenticationManager_LoggedIn()

@@ -45,7 +45,6 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(182, 27);
             this.NameTextBox.TabIndex = 0;
-            this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameTextBox_KeyPress);
             // 
             // CardTextBox
             // 

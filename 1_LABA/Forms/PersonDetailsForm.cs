@@ -72,21 +72,28 @@
             var name = NameTextBox.Text;
             var cardNumber = CardTextBox.Text;
             var birthday = DateBirthdayPicker.Value.Date;
+            var wordCount = name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
             if (name == string.Empty)
             {
-                MessageBox.Show(Text = "Incorrect name");
+                MessageBox.Show(Text = "Incorrect name! The name field should not be empty");
+            }
+
+            if (wordCount != 2)
+            {
+                MessageBox.Show(Text = "Incorrect name! The name field must consist of two words");
             }
             else
             {
-                if (cardNumber == string.Empty && (CardTextBox.TextLength < 5 && CardTextBox.TextLength >= 6))
+                if (cardNumber == string.Empty || CardTextBox.TextLength < 5)
                 {
-                    MessageBox.Show(Text = "Incorrect card number");
+                    MessageBox.Show(Text = "Incorrect card number! The card number must consist of 5 digits");
                 }
                 else
                 {
                     if (birthday >= DateTime.Now)
                     {
-                        MessageBox.Show(Text = "Incorrect birthday");
+                        MessageBox.Show(Text =
+                            "Incorrect birthday! It is not possible to set the date of birthday in the future");
                     }
                     else
                     {
@@ -108,12 +115,6 @@
                 e.Handled = true;
             }
         }
-
-        private void NameTextBox_KeyPress(object sender, KeyPressEventArgs e) //в NameTextBox вводятся только буквы
-        {
-            e.Handled = (e.KeyChar == (char)Keys.Space);
-        }
-
 
         private void AcceptButton_MouseMove(object sender, MouseEventArgs e)
         {

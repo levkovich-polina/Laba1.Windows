@@ -14,9 +14,9 @@ namespace _1_LABA
 
         public Person(int cardNumber, string name, DateTime birthday)
         {
-            this.CardNumber = cardNumber;
-            this.Name = name;
-            this.Birthday = birthday;
+            CardNumber = cardNumber;
+            Name = name;
+            Birthday = birthday;
         }
         public int calcAge(DateTime date)
         {

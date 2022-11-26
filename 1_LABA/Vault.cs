@@ -8,8 +8,8 @@ namespace _1_LABA
 {
     public partial class Vault
     {
+        private readonly AuthenticationManager _authenticationManager;
         public event Action Unlocked;
-
 
         public Vault(string password)
         {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using _1_LABA.Forms;
 
 namespace _1_LABA
 {
@@ -17,10 +19,16 @@ namespace _1_LABA
             _mainForm.Move += _mainForm_Move;
         }
 
+
         private void _mainForm_Move(object sender, EventArgs e)
         {
+            int x;
+            int y;
             throw new NotImplementedException();
+            var Point = new Point(x, y);
+            x = _mainForm.Location.X + _mainForm.Width / 2;
+            y = _mainForm.Location.Y;
+            FormMoved.Invoke(Point);
         }
-     
     }
 }

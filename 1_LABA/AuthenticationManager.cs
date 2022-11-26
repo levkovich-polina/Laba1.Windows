@@ -8,7 +8,7 @@ namespace _1_LABA
 {
     public class AuthenticationManager
     {
-        private const string AdminPasswordHash = "C93CCD78B2076528346216B3B2F701E6"; //1234 пароль
+        private  string AdminPasswordHash = "C93CCD78B2076528346216B3B2F701E6"; //1234 пароль
         public event Action LoggedIn;
 
         public bool IsAdmin
@@ -52,10 +52,9 @@ namespace _1_LABA
             }
         }
 
-        private const string NewPasswordHash = "d93591bdf7860e1e4ee2fca799911215"; //4321 новый пароль
-
         public void ChangeAdminPassword(string newPassword)
         {
+            AdminPasswordHash= "d93591bdf7860e1e4ee2fca799911215";
         }
     }
 }

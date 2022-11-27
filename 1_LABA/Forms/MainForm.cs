@@ -18,16 +18,16 @@ namespace _1_LABA.Forms
             PersonsListBox.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
         }
 
+        private void _screenPartWatcher_ScreenPartChanged(ScreenPart obj)
+        {
+            throw new NotImplementedException();
+            _vault.Enter((char)(int)screenPart);
+        }
 
         private void _vault_Unlocked()
         {
             throw new NotImplementedException();
-        }
-
-        private ScreenPart _screenPartWatcher_ScreenPartChanged()
-        {
-            throw new NotImplementedException();
-            _vault.Enter;
+            _authenticationManager.ChangeAdminPassword();
         }
 
         private void _authenticationManager_LoggedIn()
@@ -87,8 +87,5 @@ namespace _1_LABA.Forms
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

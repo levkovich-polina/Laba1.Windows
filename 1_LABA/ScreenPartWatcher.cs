@@ -9,7 +9,7 @@ namespace _1_LABA
     public partial class ScreenPartWatcher
     {
         private readonly FormPositionWatcher _formPositionWatcher;
-        public event Func<ScreenPart> ScreenPartChanged;
+        public event Action<ScreenPart> ScreenPartChanged;
 
         public ScreenPartWatcher(FormPositionWatcher formPositionWatcher)
         {
@@ -17,9 +17,13 @@ namespace _1_LABA
             _formPositionWatcher.FormMoved += _formPositionWatcher_FormMoved;
         }
 
-        private void _formPositionWatcher_FormMoved(Point obj)
+        private void _formPositionWatcher_FormMoved(Point formPosition)
         {
             throw new NotImplementedException();
+            if (formPosition == 1)
+            {
+
+            }
         }
     }
 }

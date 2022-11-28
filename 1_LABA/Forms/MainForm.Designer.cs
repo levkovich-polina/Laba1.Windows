@@ -34,6 +34,7 @@
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.FormPositionLabel = new System.Windows.Forms.Label();
+            this.CoordinateQuarterLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -96,9 +97,18 @@
             this.FormPositionLabel.AutoSize = true;
             this.FormPositionLabel.Location = new System.Drawing.Point(12, 9);
             this.FormPositionLabel.Name = "FormPositionLabel";
-            this.FormPositionLabel.Size = new System.Drawing.Size(50, 20);
+            this.FormPositionLabel.Size = new System.Drawing.Size(103, 20);
             this.FormPositionLabel.TabIndex = 5;
-            this.FormPositionLabel.Text = "label2";
+            this.FormPositionLabel.Text = "Form Position ";
+            // 
+            // CoordinateQuarterLabel
+            // 
+            this.CoordinateQuarterLabel.AutoSize = true;
+            this.CoordinateQuarterLabel.Location = new System.Drawing.Point(12, 41);
+            this.CoordinateQuarterLabel.Name = "CoordinateQuarterLabel";
+            this.CoordinateQuarterLabel.Size = new System.Drawing.Size(137, 20);
+            this.CoordinateQuarterLabel.TabIndex = 6;
+            this.CoordinateQuarterLabel.Text = "Coordinate Quarter";
             // 
             // MainForm
             // 
@@ -106,6 +116,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CoordinateQuarterLabel);
             this.Controls.Add(this.FormPositionLabel);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
@@ -129,5 +140,6 @@
         private Button EditButton;
         private Button DeleteButton;
         private Label FormPositionLabel;
+        private Label CoordinateQuarterLabel;
     }
 }

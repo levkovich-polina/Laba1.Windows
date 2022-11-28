@@ -13,8 +13,8 @@ namespace _1_LABA.Forms
              _formPositionWatcher.FormMoved += _formPositionWatcher_FormMoved;
             _authenticationManager = authenticationManager;
             _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
-            //_screenPartWatcher = screenPartWatcher;
-            //_screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
+            _screenPartWatcher = new ScreenPartWatcher(_formPositionWatcher);
+            _screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
             //_vault = vault;
             //_vault.Unlocked += _vault_Unlocked;
             InitializeComponent();
@@ -26,17 +26,16 @@ namespace _1_LABA.Forms
             FormPositionLabel.Text = formPosition.ToString();
         }
 
-        private void _screenPartWatcher_ScreenPartChanged(ScreenPart obj)
+        private void _screenPartWatcher_ScreenPartChanged(ScreenPart coordinateQuarter)
         {
-            throw new NotImplementedException();
-            char symbol = (char)((int)'0' + (int)obj);
-            _vault.Enter((char)(int)obj);
+            CoordinateQuarterLabel.Text = coordinateQuarter.ToString();
+            //char symbol = (char)((int)'0' + (int)obj);
+            //_vault.Enter((char)(int)obj);
         }
 
         private void _vault_Unlocked()
         {
-            throw new NotImplementedException();
-          //  _authenticationManager.ChangeAdminPassword(newPassword:);
+            //  _authenticationManager.ChangeAdminPassword(newPassword:);
         }
 
         private void _authenticationManager_LoggedIn()

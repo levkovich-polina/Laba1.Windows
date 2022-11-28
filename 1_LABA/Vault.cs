@@ -9,18 +9,17 @@ namespace _1_LABA
 {
     public partial class Vault
     {
-        private readonly AuthenticationManager _authenticationManager;
         public event Action Unlocked;
-        private readonly AuthenticationForm _authenticationForm;
         private string _password;
 
         public Vault(string password)
-       {
-           var vault = new Vault("123412");
-           _password = password;
-       }
+        {
+            var vault = new Vault("123412");
+            _password = password;
+        }
 
         private int _correctSymbolCount = 0;
+
         public void Enter(char symbol)
         {
             if (_password[_correctSymbolCount] == symbol)

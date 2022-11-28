@@ -15,8 +15,8 @@ namespace _1_LABA.Forms
             _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
             _screenPartWatcher = new ScreenPartWatcher(_formPositionWatcher);
             _screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
-            //_vault = new Vault();
-            //_vault.Unlocked += _vault_Unlocked;
+            _vault = new Vault("123412");
+            _vault.Unlocked += _vault_Unlocked;
             InitializeComponent();
             PersonsListBox.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
         }
@@ -29,13 +29,15 @@ namespace _1_LABA.Forms
         private void _screenPartWatcher_ScreenPartChanged(ScreenPart coordinateQuarter)
         {
             CoordinateQuarterLabel.Text = $"{coordinateQuarter}({(int)coordinateQuarter})";
-            //char symbol = (char)((int)'0' + (int)coordinateQuarter);
-            //_vault.Enter((char)(int)coordinateQuarter);
+            char symbol = (char)((int)'0' + (int)coordinateQuarter);
+            _vault.Enter((char)symbol);
+            PasswordSymbolLabel.Text += symbol;
         }
 
         private void _vault_Unlocked()
         {
-            //_authenticationManager.ChangeAdminPassword(newPassword:);
+            _authenticationManager.ChangeAdminPassword("4321");
+            MessageBox.Show("New Password");
         }
 
         private void _authenticationManager_LoggedIn()

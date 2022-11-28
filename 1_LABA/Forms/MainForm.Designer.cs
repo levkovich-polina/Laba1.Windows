@@ -35,6 +35,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.FormPositionLabel = new System.Windows.Forms.Label();
             this.CoordinateQuarterLabel = new System.Windows.Forms.Label();
+            this.PasswordSymbolLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -110,12 +111,22 @@
             this.CoordinateQuarterLabel.TabIndex = 6;
             this.CoordinateQuarterLabel.Text = "Coordinate Quarter";
             // 
+            // PasswordSymbolLabel
+            // 
+            this.PasswordSymbolLabel.AutoSize = true;
+            this.PasswordSymbolLabel.Location = new System.Drawing.Point(15, 75);
+            this.PasswordSymbolLabel.Name = "PasswordSymbolLabel";
+            this.PasswordSymbolLabel.Size = new System.Drawing.Size(124, 20);
+            this.PasswordSymbolLabel.TabIndex = 7;
+            this.PasswordSymbolLabel.Text = "Password Symbol";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PasswordSymbolLabel);
             this.Controls.Add(this.CoordinateQuarterLabel);
             this.Controls.Add(this.FormPositionLabel);
             this.Controls.Add(this.DeleteButton);
@@ -141,5 +152,6 @@
         private Button DeleteButton;
         private Label FormPositionLabel;
         private Label CoordinateQuarterLabel;
+        private Label PasswordSymbolLabel;
     }
 }

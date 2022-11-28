@@ -9,16 +9,14 @@ namespace _1_LABA
 {
     public partial class Vault
     {
-        public event Action Unlocked;
         private string _password;
+        private int _correctSymbolCount = 0;
+        public event Action Unlocked;
 
         public Vault(string password)
         {
-            var vault = new Vault("123412");
             _password = password;
         }
-
-        private int _correctSymbolCount = 0;
 
         public void Enter(char symbol)
         {
@@ -33,6 +31,12 @@ namespace _1_LABA
             else
             {
                 _correctSymbolCount = 0;
+            }
+
+            if (_correctSymbolCount == _password.Length)
+            {
+                _correctSymbolCount = 0;
+                Unlocked.Invoke();
             }
         }
     }

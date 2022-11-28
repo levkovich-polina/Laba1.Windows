@@ -10,7 +10,9 @@ namespace _1_LABA
     public partial class ScreenPartWatcher
     {
         private readonly FormPositionWatcher _formPositionWatcher;
+        private ScreenPart _previousScreenPart;
         public event Action<ScreenPart> ScreenPartChanged;
+
 
         public ScreenPartWatcher(FormPositionWatcher formPositionWatcher)
         {
@@ -30,22 +32,30 @@ namespace _1_LABA
             int x2 = x1 - x0;
             int y2 = y0 - y1;
 
+            ScreenPart actualScreenPart=ScreenPart.RightTop;
+
             if (x2 > 0 && y2 > 0) //1 четверть
             {
-                ScreenPartChanged.Invoke(ScreenPart.RightTop);
+                actualScreenPart = (ScreenPart.RightTop);
             }
             else if (x2 < 0 && y2 > 0) //2 четверть
             {
-                ScreenPartChanged.Invoke(ScreenPart.LeftTop);
+                actualScreenPart = (ScreenPart.LeftTop);
             }
             else if (x2 < 0 && y2 < 0) //3 четверть
             {
-                ScreenPartChanged.Invoke(ScreenPart.LeftBottom);
+                actualScreenPart = (ScreenPart.LeftBottom);
             }
             else if (x2 > 0 && y2 < 0) //4 четверть
             {
-                ScreenPartChanged.Invoke(ScreenPart.RightBottom);
+                actualScreenPart = (ScreenPart.RightBottom);
             }
+
+            if (actualScreenPart != _previousScreenPart)
+            {
+                ScreenPartChanged.Invoke(actualScreenPart);
+            }
+            _previousScreenPart = actualScreenPart;
         }
     }
 }

@@ -19,15 +19,13 @@ namespace _1_LABA
             _mainForm.Move += _mainForm_Move;
         }
 
-
         private void _mainForm_Move(object sender, EventArgs e)
         {
             int x;
             int y;
-            throw new NotImplementedException();
-            var Point = new Point(x, y);
             x = _mainForm.Location.X + _mainForm.Width / 2;
             y = _mainForm.Location.Y;
+            var Point = new Point(x, y);
             FormMoved.Invoke(Point);
         }
     }

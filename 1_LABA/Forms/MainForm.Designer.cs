@@ -33,6 +33,7 @@
             this.CreateButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.FormPositionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -90,12 +91,22 @@
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // FormPositionLabel
+            // 
+            this.FormPositionLabel.AutoSize = true;
+            this.FormPositionLabel.Location = new System.Drawing.Point(12, 9);
+            this.FormPositionLabel.Name = "FormPositionLabel";
+            this.FormPositionLabel.Size = new System.Drawing.Size(50, 20);
+            this.FormPositionLabel.TabIndex = 5;
+            this.FormPositionLabel.Text = "label2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.FormPositionLabel);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CreateButton);
@@ -106,6 +117,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MainForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,5 +128,6 @@
         private Button CreateButton;
         private Button EditButton;
         private Button DeleteButton;
+        private Label FormPositionLabel;
     }
 }

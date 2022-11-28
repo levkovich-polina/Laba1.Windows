@@ -20,10 +20,6 @@ namespace _1_LABA
         private void _formPositionWatcher_FormMoved(Point formPosition)
         {
             throw new NotImplementedException();
-            if (formPosition == 1)
-            {
-
-            }
         }
     }
 }

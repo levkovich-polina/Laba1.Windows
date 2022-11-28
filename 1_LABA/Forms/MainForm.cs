@@ -5,29 +5,38 @@ namespace _1_LABA.Forms
         private readonly AuthenticationManager _authenticationManager;
         private readonly ScreenPartWatcher _screenPartWatcher;
         private readonly Vault _vault;
-
-        public MainForm(AuthenticationManager authenticationManager, ScreenPartWatcher screenPartWatcher, Vault vault)
+        private readonly ScreenPart _screenPart;
+        private readonly FormPositionWatcher _formPositionWatcher;
+        public MainForm(AuthenticationManager authenticationManager)
         {
+             _formPositionWatcher = new FormPositionWatcher(this);
+             _formPositionWatcher.FormMoved += _formPositionWatcher_FormMoved;
             _authenticationManager = authenticationManager;
             _authenticationManager.LoggedIn += _authenticationManager_LoggedIn;
-            _screenPartWatcher = screenPartWatcher;
-            _screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
-            _vault = vault;
-            _vault.Unlocked += _vault_Unlocked;
+            //_screenPartWatcher = screenPartWatcher;
+            //_screenPartWatcher.ScreenPartChanged += _screenPartWatcher_ScreenPartChanged;
+            //_vault = vault;
+            //_vault.Unlocked += _vault_Unlocked;
             InitializeComponent();
             PersonsListBox.Items.Add(new Person(12345, "Polina", new DateTime(2003, 8, 20)));
+        }
+
+        private void _formPositionWatcher_FormMoved(Point formPosition)
+        {
+            FormPositionLabel.Text = formPosition.ToString();
         }
 
         private void _screenPartWatcher_ScreenPartChanged(ScreenPart obj)
         {
             throw new NotImplementedException();
-            _vault.Enter((char)(int)screenPart);
+            char symbol = (char)((int)'0' + (int)obj);
+            _vault.Enter((char)(int)obj);
         }
 
         private void _vault_Unlocked()
         {
             throw new NotImplementedException();
-            _authenticationManager.ChangeAdminPassword();
+          //  _authenticationManager.ChangeAdminPassword(newPassword:);
         }
 
         private void _authenticationManager_LoggedIn()
